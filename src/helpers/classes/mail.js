@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * Dependencies
- */
-const EmailAddress = require('./email-address');
 const Message = require('./message');
 const deepClone = require('../helpers/deep-clone');
 const arrayToJSON = require('../helpers/array-to-json');
@@ -37,11 +33,40 @@ class Mail {
       throw new Error('Expecting object for Mail data');
     }
 
+    data.message = {
+      recipients: [],
+      headers: {},
+      content: {},
+      attachments: []
+    };
+
+    if (data.hasOwnProperty('to')) {
+      data.message.recipients = [data.to];
+    }
+
+    if (data.hasOwnProperty('from')) {
+      data.message.headers['from'] = data.from;
+    }
+
+    if (data.hasOwnProperty('subject')) {
+      data.message.headers['subject'] = data.subject;
+    }
+
+    if (data.hasOwnProperty('text')) {
+      data.message.content['text/plain'] = data.text;
+    }
+
+    if (data.hasOwnProperty('html')) {
+      data.message.content['text/html'] = data.html;
+    }
+
+    console.info("fromData: ", data);
+
     const { message } = data;
 
     //Using "to" property for message
     if (message) {
-      this.setmessage(message);
+      this.setMessage(message);
     }
 
   }
@@ -89,11 +114,12 @@ class Mail {
    */
   toJSON() {
     const { message } = this;
-
     //Initialize with mandatory values
     const json = {
-      message: arrayToJSON(message),
+      message: message,
     };
+
+    console.info('message: ', message);
 
     return { data: json };
   }

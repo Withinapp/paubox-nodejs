@@ -11,7 +11,8 @@
     "lint": "eslint . --fix",
     "test:all": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"**/*.spec.js\"",
     "test": "npm run test:all -s",
-    "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
+    "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html",
+    "example": "node ./examples"
   },
   "repository": {
     "type": "git",
@@ -42,5 +43,10 @@
     "mocha": "^5.2.0",
     "moment": "^2.22.2",
     "sinon": "^6.0.0"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "deepmerge": "^2.1.1",
+    "request": "^2.87.0"
   }
 }

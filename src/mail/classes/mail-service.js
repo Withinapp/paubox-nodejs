@@ -35,10 +35,17 @@ class MailService {
   }
 
   /**
- * Username pass through for convenience
- */
-  setUsername(username) {
-    this.client.setApiUser(username);
+  * Username pass through for convenience
+  */
+  setApiUsername(username) {
+    this.client.setApiUsername(username);
+  }
+
+  /**
+  * testMode pass through for convenience
+  */
+  isTestMode(debug) {
+    this.client.isTestMode(debug);
   }
 
   /**

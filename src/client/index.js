@@ -1,9 +1,7 @@
 'use strict';
 
-/**
- * Dependencies
- */
-const Client = require('./classes/client');
+const client = require('./src/client');
+const Client = require('./src/classes/client');
 
-//Export singleton instance
-module.exports = new Client();
+module.exports = client;
+module.exports.Client = Client;

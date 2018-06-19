@@ -1,7 +1,16 @@
 'use strict';
 
-import http from 'request';
-import pkg from './package.json';
+const http = require('request');
+const pkg = require('../../../../package.json');
+
+const {
+  helpers: {
+    mergeData,
+  },
+  classes: {
+    ResponseError,
+  },
+} = require('../../../helpers');
 
 /**
  * Paubox REST Client
@@ -13,7 +22,7 @@ class Client {
     // API key
     this.apiKey = '';
     // Api User
-    this.apiUser = '';
+    this.apiUsername = '';
     // Api Version
     this.apiVersion = 'v1';
     // Api Mode
@@ -29,7 +38,7 @@ class Client {
     //Empty default request
     this.defaultRequest = {
       json: true,
-      baseUrl: `https://api.paubox.com/${this.apiVersion}/${this.apiUser}`,
+      baseUrl: `https://api.paubox.net/${this.apiVersion}`,
       url: '',
       method: 'GET',
       headers: {},
@@ -46,14 +55,14 @@ class Client {
   /**
   * Set API User
   */
-  setApiUser(apiUser) {
-    this.apiUser = apiUser;
+  setApiUsername(username) {
+    this.apiUsername = username;
   }
 
   /**
   * Set Test Mode
   */
-  setTestMode(debug) {
+  isTestMode(debug) {
     this.testMode = debug;
   }
 
@@ -101,6 +110,9 @@ class Client {
       delete data.uri;
     }
 
+    // TODO: find better way to handle this
+    this.setDefaultRequest('baseUrl', `${this.defaultRequest.baseUrl}/${this.apiUsername}/`)
+
     //Merge data with empty request
     const request = mergeData(this.defaultRequest, data);
 
@@ -131,7 +143,7 @@ class Client {
           return reject(new ResponseError(response));
         }
 
-        //Successful response
+        // Successful response
         resolve([response, body]);
       });
     });
@@ -153,5 +165,4 @@ class Client {
   }
 }
 
-//Export class
 module.exports = Client;

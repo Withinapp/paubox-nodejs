@@ -1,7 +1,5 @@
 'use strict';
 
-/** Dependencies */
-const EmailAddress = require('./email-address');
 const deepClone = require('../helpers/deep-clone');
 const merge = require('deepmerge');
 
@@ -35,7 +33,7 @@ class Message {
 
     // Extract properties from data
     const {
-      recipients, bcc, attachments, headers, content, allowNonTLS, attachments
+      recipients, bcc, attachments, headers, content, allowNonTLS,
     } = data;
 
     // Set data
@@ -66,7 +64,7 @@ class Message {
     if (!Array.isArray(recipient)) {
       recipient = [recipient];
     }
-    this.recipients = EmailAddress.create(recipient);
+    this.recipients = recipient;
   }
 
   /** Add a single recipient */
@@ -74,7 +72,7 @@ class Message {
     if (typeof recipient === 'undefined') {
       return;
     }
-    this.recipients.push(EmailAddress.create(recipient));
+    this.recipients.push(recipient);
   }
 
   /** Set bcc */
@@ -85,7 +83,7 @@ class Message {
     if (!Array.isArray(bcc)) {
       bcc = [bcc];
     }
-    this.bcc = EmailAddress.create(bcc);
+    this.bcc = bcc;
   }
 
   /** Add a single bcc */
@@ -93,7 +91,7 @@ class Message {
     if (typeof bcc === 'undefined') {
       return;
     }
-    this.bcc.push(EmailAddress.create(bcc));
+    this.bcc.push(bcc);
   }
 
   /** Set headers */
@@ -140,6 +138,29 @@ class Message {
     this.content[key] = value;
   }
 
+  /**
+   * Set attachments
+   */
+  setAttachments(attachments) {
+    if (typeof attachments === 'undefined') {
+      return;
+    }
+    if (!Array.isArray(attachments)) {
+      throw new Error('Array expected for `attachments`');
+    }
+    this.attachments = attachments;
+  }
+
+  /**
+   * Add attachment
+   */
+  addAttachment(attachment) {
+    if (typeof attachment !== 'object') {
+      throw new Error('Object expected for `attachment`');
+    }
+    this.attachments.push(attachment);
+  }
+
   /** To JSON */
   toJSON() {
 
@@ -172,7 +193,7 @@ class Message {
     }
 
     // Return message object
-    return { message: json };
+    return json;
   }
 }
 
