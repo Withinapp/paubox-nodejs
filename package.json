@@ -21,5 +21,14 @@
   "bugs": {
     "url": "https://github.com/Withinapp/paubox-nodejs/issues"
   },
-  "homepage": "https://github.com/Withinapp/paubox-nodejs#readme"
+  "homepage": "https://github.com/Withinapp/paubox-nodejs#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "mocha": "^5.2.0",
+    "moment": "^2.22.2",
+    "sinon": "^6.0.0"
+  }
 }
