@@ -1,0 +1,25 @@
+{
+  "name": "paubox-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Withinapp/paubox-nodejs.git"
+  },
+  "keywords": [
+    "paubox",
+    "hipaa",
+    "email",
+    "api"
+  ],
+  "author": "Level Therapy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Withinapp/paubox-nodejs/issues"
+  },
+  "homepage": "https://github.com/Withinapp/paubox-nodejs#readme"
+}
