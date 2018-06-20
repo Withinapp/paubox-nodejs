@@ -1,6 +1,6 @@
 {
   "name": "paubox-nodejs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "private": true,
@@ -25,7 +25,7 @@
     "api"
   ],
   "author": "Level Therapy",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Withinapp/paubox-nodejs/issues"
   },
