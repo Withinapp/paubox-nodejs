@@ -140,6 +140,7 @@ class Client {
 
         //Response error
         if (response.statusCode >= 400) {
+          console.error('Paubox Error: ', response.body);
           return reject(new ResponseError(response));
         }
 
