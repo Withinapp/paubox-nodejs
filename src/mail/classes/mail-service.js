@@ -88,7 +88,6 @@ class MailService {
       //Create request
       const request = {
         method: 'POST',
-        // baseUrl: `https://api.paubox.net/v1/${this.client.username}`,
         url: '/messages',
         body,
       };

@@ -35,6 +35,7 @@ class Mail {
 
     data.message = {
       recipients: [],
+      bcc: [],
       headers: {},
       content: {},
       attachments: []
@@ -42,6 +43,10 @@ class Mail {
 
     if (data.hasOwnProperty('to')) {
       data.message.recipients = [data.to];
+    }
+
+    if (data.hasOwnProperty('bcc')) {
+      data.message.bcc = [data.bcc];
     }
 
     if (data.hasOwnProperty('from')) {
@@ -59,8 +64,6 @@ class Mail {
     if (data.hasOwnProperty('html')) {
       data.message.content['text/html'] = data.html;
     }
-
-    console.info("fromData: ", data);
 
     const { message } = data;
 
@@ -118,8 +121,6 @@ class Mail {
     const json = {
       message: message,
     };
-
-    console.info('message: ', message);
 
     return { data: json };
   }

@@ -112,16 +112,11 @@ class Client {
       delete data.uri;
     }
 
+    // TODO: find better way to handle this
     if (this.defaultRequest.baseUrl) {
       delete this.defaultRequest.baseUrl;
       this.setDefaultRequest('baseUrl', `${this.baseUrl}/${this.apiUsername}/`);
-      console.info("Paubox data: ", this.defaultRequest.baseUrl, this.apiUsername);
     }
-
-    // TODO: find better way to handle this
-
-
-    // this.setDefaultRequest('baseUrl', `${this.defaultRequest.baseUrl}/${this.apiUsername}/`)
 
     //Merge data with empty request
     const request = mergeData(this.defaultRequest, data);
@@ -150,6 +145,7 @@ class Client {
 
         //Response error
         if (response.statusCode >= 400) {
+          console.error("Paubox Error: ", response.body);
           return reject(new ResponseError(response));
         }
 
