@@ -113,11 +113,13 @@ class Client {
     }
 
     if (this.defaultRequest.baseUrl) {
-      this.setDefaultRequest('baseUrl', `${this.baseUrl}/${this.apiUsername}/`)
+      delete this.defaultRequest.baseUrl;
+      this.setDefaultRequest('baseUrl', `${this.baseUrl}/${this.apiUsername}/`);
+      console.info("Paubox data: ", this.defaultRequest.baseUrl, this.apiUsername);
     }
 
     // TODO: find better way to handle this
-    console.info("Paubox data: ", this.defaultRequest.baseUrl, this.apiUsername)
+
 
     // this.setDefaultRequest('baseUrl', `${this.defaultRequest.baseUrl}/${this.apiUsername}/`)
 
