@@ -25,6 +25,8 @@ class Client {
     this.apiUsername = '';
     // Api Version
     this.apiVersion = 'v1';
+    // Api baseUrl
+    this.baseUrl = `https://api.paubox.net/${this.apiVersion}`;
     // Api Mode
     this.testMode = false;
 
@@ -110,13 +112,17 @@ class Client {
       delete data.uri;
     }
 
+    if (this.defaultRequest.baseUrl) {
+      this.setDefaultRequest('baseUrl', `${this.baseUrl}/${this.apiUsername}/`)
+    }
+
     // TODO: find better way to handle this
-    this.setDefaultRequest('baseUrl', `${this.defaultRequest.baseUrl}/${this.apiUsername}/`)
+    console.info("Paubox data: ", this.defaultRequest.baseUrl, this.apiUsername)
+
+    // this.setDefaultRequest('baseUrl', `${this.defaultRequest.baseUrl}/${this.apiUsername}/`)
 
     //Merge data with empty request
     const request = mergeData(this.defaultRequest, data);
-
-    console.info("Paubox data: ", this.defaultRequest, data)
 
     //Add headers
     request.headers = this.createHeaders(request.headers);
@@ -142,7 +148,6 @@ class Client {
 
         //Response error
         if (response.statusCode >= 400) {
-          console.error('Paubox Error: ', response);
           return reject(new ResponseError(response));
         }
 
