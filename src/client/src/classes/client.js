@@ -116,6 +116,8 @@ class Client {
     //Merge data with empty request
     const request = mergeData(this.defaultRequest, data);
 
+    console.info("Paubox data: ", this.defaultRequest, data)
+
     //Add headers
     request.headers = this.createHeaders(request.headers);
     return request;
@@ -140,7 +142,7 @@ class Client {
 
         //Response error
         if (response.statusCode >= 400) {
-          console.error('Paubox Error: ', response.body);
+          console.error('Paubox Error: ', response);
           return reject(new ResponseError(response));
         }
 
@@ -161,7 +163,7 @@ class Client {
         .catch(error => cb(error, null));
     }
 
-    //Return promise
+    // Return promise
     return promise;
   }
 }
