@@ -1,7 +1,7 @@
 const Paubox = require('../index');
 
-Paubox.setApiKey('24f5564f0265ad1120e72eb4d6c045a5');
-Paubox.setApiUsername('trylevel');
+Paubox.setApiKey('API KEY');
+Paubox.setApiUsername('username');
 Paubox.isTestMode(true);
 
 const data = {
