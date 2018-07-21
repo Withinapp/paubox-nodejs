@@ -145,13 +145,14 @@ class Client {
 
         //Response error
         if (response.statusCode >= 400) {
-          console.error("Paubox Error: ", response.body);
           return reject(new ResponseError(response));
         }
 
         // Successful response
         resolve([response, body]);
       });
+    }).catch((error) => {
+      // Silence UnhandledPromiseRejectionWarning:
     });
 
     // Throw and error incase function not passed
