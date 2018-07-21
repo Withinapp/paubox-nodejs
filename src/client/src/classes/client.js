@@ -111,12 +111,12 @@ class Client {
     }
 
     // TODO: find better way to handle this
+    console.info("Paubox data: ", this.defaultRequest.baseUrl, this.apiUsername)
+
     this.setDefaultRequest('baseUrl', `${this.defaultRequest.baseUrl}/${this.apiUsername}/`)
 
     //Merge data with empty request
     const request = mergeData(this.defaultRequest, data);
-
-    console.info("Paubox data: ", this.defaultRequest, data)
 
     //Add headers
     request.headers = this.createHeaders(request.headers);
@@ -142,7 +142,6 @@ class Client {
 
         //Response error
         if (response.statusCode >= 400) {
-          console.error('Paubox Error: ', response);
           return reject(new ResponseError(response));
         }
 
