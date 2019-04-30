@@ -21,7 +21,7 @@ If you are interested in the future direction of this project, please take a loo
 <a name="contribute"></a>
 # How to Contribute
 
-We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](https://github.com/sendgrid/paubox-nodejs/blob/master/CONTRIBUTING.md) guide for details.
+We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](https://github.com/Withinapp/paubox-nodejs/blob/master/CONTRIBUTING.md) guide for details.
 
 # Troubleshooting
 
